@@ -2514,6 +2514,11 @@ team
   overflow: hidden;
   padding-bottom: 130%;
 }
+
+
+
+
+
 .mil-team-card:after {
   content: "";
   position: absolute;
@@ -2850,7 +2855,7 @@ blog
 .mil-blog-card .mil-post-descr .mil-post-text {
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

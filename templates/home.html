@@ -3,6 +3,9 @@
 {% load static %}
 {% block title %} Portfolio {% endblock title %}
 {% block content %}
+
+
+
 <body>
     {% if messages %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -74,16 +77,16 @@
                                         <a href="{% url 'home-page' %}">Homepage</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Portfolio</a>
+                                        <a href="{% url 'portfolio-page' %}">Portfolio</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Services</a>
+                                        <a href="{% url 'services-page' %}">Services</a>
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="{% url 'blog-page' %}">Blog</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Team</a>
+                                        <a href="{% url 'team-page' %}">Team</a>
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="{% url 'contact-page' %}">Contact</a>
@@ -164,7 +167,7 @@
         <!-- frame -->
         <div class="mil-frame">
             <div class="mil-frame-top">
-                <a href="home-1.html" class="mil-logo">A.</a>
+                <a href="{% url 'home-page'%}" class="mil-logo">A.</a>
                 <div class="mil-menu-btn">
                     <span></span>
                 </div>
@@ -207,7 +210,7 @@
                                     </div>
                                 </div>
 
-                                <a href="services.html" class="mil-button mil-arrow-place mil-btn-space">
+                                <a href="{% url 'services-page'%}" class="mil-button mil-arrow-place mil-btn-space">
                                     <span>What we do</span>
                                 </a>
 
@@ -301,7 +304,7 @@
                                 <div class="mil-complex-text justify-content-center mil-up">
 
                                     <h2 class="mil-h1 mil-muted mil-center">For Your <span class="mil-thin">Business.</span></h2>
-                                    <a href="services.html" class="mil-services-button mil-button mil-arrow-place"><span>What we do</span></a>
+                                    <a href="{% url 'services-page'%}" class="mil-services-button mil-button mil-arrow-place"><span>What we do</span></a>
 
                                 </div>
                             </div>
@@ -361,7 +364,7 @@
 
                                     <p class="mil-up mil-mb-60">Together, our creative team is committed to delivering impactful work that exceeds expectations.</p>
 
-                                    <div class="mil-up"><a href="team.html" class="mil-button mil-arrow-place mil-mb-60"><span>Read more</span></a></div>
+                                    <div class="mil-up"><a href="{% url 'team-page'%}" class="mil-button mil-arrow-place mil-mb-60"><span>Read more</span></a></div>
 
                                     <h4 class="mil-up"><span class="mil-thin">We</span> delivering <br><span class="mil-thin">exceptional</span> results.</h4>
                                 </div>
@@ -578,7 +581,7 @@
                             </div>
                             <div class="col-lg-6 mil-mb-30">
                                 <div class="mil-adaptive-right mil-up">
-                                    <a href="blog.html" class="mil-link mil-dark mil-arrow-place">
+                                    <a href="{% url 'blog-page'%}" class="mil-link mil-dark mil-arrow-place">
                                         <span>View all</span>
                                     </a>
                                 </div>
@@ -599,7 +602,7 @@
                                             <div class="mil-label mil-upper">👁️‍🗨️ {{blog.hit_count.hits}}</div>
                                         </div>
                                         <h4 class="mil-up mil-mb-30">{{blog.title}}</h4>
-                                        <p class="mil-post-text mil-up mil-mb-30">{{blog.content | safe | truncatewords:20 }}</p>                                        <div class="mil-link mil-dark mil-arrow-place mil-up">
+                                        <p class="mil-post-text mil-up mil-mb-30">{{blog.content | safe | truncatewords:10 }}</p>                                        <div class="mil-link mil-dark mil-arrow-place mil-up">
                                             <span>Read more</span>
                                         </div>
                                     </div>

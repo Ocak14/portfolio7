@@ -49,7 +49,7 @@
         <div class="mil-menu-frame">
             <!-- frame clone -->
             <div class="mil-frame-top">
-                <a href="home-1.html" class="mil-logo">A.</a>
+                <a href="{% url 'home-page'%}" class="mil-logo">A.</a>
                 <div class="mil-menu-btn">
                     <span></span>
                 </div>
@@ -66,16 +66,16 @@
                                         <a href="{% url 'home-page' %}">Homepage</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Portfolio</a>
+                                        <a href="{% url 'portfolio-page' %}">Portfolio</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Services</a>
+                                        <a href="{% url 'services-page' %}">Services</a>
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="{% url 'blog-page' %}">Blog</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Team</a>
+                                        <a href="{% url 'team-page'%}">Team</a>
                                     </li>
                                     <li class="mil-has-children mil-active">
                                         <a href="{% url 'contact-page' %}">Contact</a>
@@ -156,7 +156,7 @@
         <!-- frame -->
         <div class="mil-frame">
             <div class="mil-frame-top">
-                <a href="home-1.html" class="mil-logo">A.</a>
+                <a href="{% url 'home-page'%}" class="mil-logo">A.</a>
                 <div class="mil-menu-btn">
                     <span></span>
                 </div>
@@ -181,8 +181,8 @@
                     <div class="mil-banner-content mil-center mil-up">
                         <div class="container">
                             <ul class="mil-breadcrumbs mil-center mil-mb-60">
-                                <li><a href="home-1.html">Homepage</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{% url 'home-page'%}">Homepage</a></li>
+                                <li><a href="{% url 'contact-page'%}">Contact</a></li>
                             </ul>
                             <h1 class="mil-mb-60">Get in touch!</h1>
                             <a href="#contact" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
