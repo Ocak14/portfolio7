@@ -5,16 +5,14 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.text import slugify
 
 
-class Category(models.Model):
+class PortfolioCategory(models.Model):
     name = models.CharField(max_length=50)
     def __str__(self):
         return f"{self.name}"
     
-
-
 class Portfolio(models.Model):
-    image =models.ImageField(upload_to='portfolio/images')
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='portfolio/images')
+    category = models.ForeignKey(PortfolioCategory,on_delete=models.CASCADE)
     url = models.URLField()
     new_date = models.DateField(auto_now=True)
     title=models.CharField(max_length=70)
@@ -41,7 +39,7 @@ class Contact(models.Model):
 class Blog(models.Model,HitCountMixin):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='Blogs/images')
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    category = models.ForeignKey(PortfolioCategory,on_delete=models.CASCADE)
     created_date = models.DateField(auto_now=True)
     author = models.CharField(max_length=50)
     content = RichTextField()

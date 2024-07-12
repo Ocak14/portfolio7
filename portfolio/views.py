@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from .models import Contact, Blog, Category,Portfolio,Team
+from .models import Contact, Blog,Portfolio,Team,PortfolioCategory
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from hitcount.views import HitCountDetailView
 from django.core.paginator import Paginator
+
 import math
 
 class BlogDetailView(HitCountDetailView):
@@ -15,7 +16,8 @@ class BlogDetailView(HitCountDetailView):
     slug_field = 'slug'
 
 def blog_view(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().order_by('-created_date')
+    
     blog_count = len(blogs)
     count_obj = 5
     page_count = math.ceil(blog_count / count_obj)
@@ -23,9 +25,10 @@ def blog_view(request):
 
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)
-    categories = Category.objects.all()
-    popular_blogs = list(blogs)  # Convert QuerySet to list
-    popular_blogs.sort(key=lambda x: x.hit_count.hits, reverse=True)  # Sorting popular blogs by hit count
+    categories =PortfolioCategory.objects.all()
+    popular_blogs = Blog.objects.all().order_by('hit_count_generic')[:2]
+    # popular_blogs = list(blogs)  
+  
 
     context = {
         "categories": categories,
@@ -37,12 +40,19 @@ def blog_view(request):
     return render(request, 'blog.html', context)
 
 def home_view(request):
-    popular_blogs = Blog.objects.all()
-    popular_blogs = list(popular_blogs)  # Convert QuerySet to list
-    sorted(popular_blogs,key=lambda x: x.hit_count.hits, reverse=True)  # Sorting popular blogs by hit count
+    popular_blogs =Blog.objects.all().order_by('hit_count_generic')[:2]
+    # popular_blogs = list(Blog.objects.all())
+    # print(popular_blogs[0].hit_count.hits)
+    # for i in range(len(popular_blogs)):
+    #     for j in range(len(popular_blogs)):
+    #         if popular_blogs[j].hit_count.hits<popular_blogs[i].hit_count.hits:
+    #             popular_blogs[i],popular_blogs[j] = popular_blogs[j],popular_blogs[i]
 
+    # popular_blogs = list(popular_blogs)  # Convert QuerySet to list
+    # sorted(popular_blogs,key=lambda x: x.hit_count.hits, reverse=True)  # Sorting popular blogs by hit count
+    popular_blogs = popular_blogs[:2]
 
-    context = {"popular_blogs": popular_blogs[:2]}
+    context = {"popular_blogs": popular_blogs}
     return render(request, 'home.html', context)
 
 def contact_view(request):
