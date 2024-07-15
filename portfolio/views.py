@@ -16,7 +16,13 @@ class BlogDetailView(HitCountDetailView):
     slug_field = 'slug'
 
 def blog_view(request):
-    blogs = Blog.objects.all().order_by('-created_date')
+    v = request.GET.get("category")
+
+    if v:
+            v = int(v)
+            blogs = Blog.objects.filter(category_id=int(v)).order_by('-created_date')
+    else:
+            blogs = Blog.objects.all().order_by('-created_date')
     
     blog_count = len(blogs)
     count_obj = 5
@@ -35,7 +41,8 @@ def blog_view(request):
         'popular_blogs': popular_blogs[:2],
         'page_obj': page_obj,
         'page_count': range(1, page_count + 1),
-        'page': int(page)
+        'page': int(page),
+        'curr_category':v,
     }
     return render(request, 'blog.html', context)
 

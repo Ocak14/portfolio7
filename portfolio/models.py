@@ -10,6 +10,13 @@ class PortfolioCategory(models.Model):
     def __str__(self):
         return f"{self.name}"
     
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return f"{self.name}"
+    
+    
 class Portfolio(models.Model):
     image = models.ImageField(upload_to='portfolio/images')
     category = models.ForeignKey(PortfolioCategory,on_delete=models.CASCADE)

@@ -1002,6 +1002,8 @@ spaces
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
+
+
 @media screen and (max-width: 992px) {
   .mil-adaptive-right {
     -webkit-box-pack: start;
@@ -1569,6 +1571,7 @@ menu
 .mil-main-menu ul li a.mil-active {
   padding-left: 25px;
 }
+
 .mil-main-menu ul li a.mil-active:before {
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -1582,7 +1585,7 @@ menu
   -webkit-filter: brightness(110%);
           filter: brightness(110%);
 }
-.mil-main-menu ul li.mil-has-children > a:hover {
+.mil-main-menu ul li.mil-has-children  a:hover {
   color: rgb(255, 255, 255);
   padding-left: 25px;
 }
