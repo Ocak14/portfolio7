@@ -57,9 +57,17 @@ def home_view(request):
 
     # popular_blogs = list(popular_blogs)  # Convert QuerySet to list
     # sorted(popular_blogs,key=lambda x: x.hit_count.hits, reverse=True)  # Sorting popular blogs by hit count
+    popular_blogs = Blog.objects.all()
+    team=Team.objects.all()[:2]
+    teams = list(Team.objects.all().order_by('-id')[:2][::-1])
+
     popular_blogs = popular_blogs[:2]
 
-    context = {"popular_blogs": popular_blogs}
+    context = {
+         "popular_blogs": popular_blogs[:2],
+          "team":team,
+          "teams":teams
+          }
     return render(request, 'home.html', context)
 
 def contact_view(request):
